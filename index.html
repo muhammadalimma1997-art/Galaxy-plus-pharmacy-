@@ -8,21 +8,28 @@
             margin: 0;
             font-family: Arial;
             background: #d1fae5;
-            text-align: center;
         }
 
         .container {
             background: white;
-            margin: 50px auto;
+            margin: 30px auto;
             padding: 40px;
             width: 80%;
+            max-width: 900px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* BLACK SECTION */
+        .dark {
+            background: #000;
+            color: white;
         }
 
         h1 {
             color: #065f46;
             font-size: 35px;
+            text-align: center;
         }
 
         .images {
@@ -35,83 +42,163 @@
         .images img {
             width: 220px;
             border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .images img:hover {
+            transform: scale(1.1);
         }
 
         .description {
             font-size: 18px;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
+            text-align: justify;
         }
 
         .btn {
             display: inline-block;
-            margin: 10px;
+            margin-top: 15px;
             background: #10b981;
             color: white;
             padding: 12px 25px;
-            text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
 
-        .social a {
-            display: inline-block;
-            margin: 10px;
-            color: #065f46;
-            text-decoration: none;
+        .btn:hover {
+            background: #059669;
+        }
+
+        .form-section {
+            text-align: center;
+        }
+
+        .input-group {
+            width: 80%;
+            margin: 15px auto;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
             font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
         }
 
         .footer {
-            margin-top: 30px;
-            color: #065f46;
+            margin-top: 20px;
+            text-align: center;
+            color: #ccc;
         }
     </style>
-
 </head>
+
 <body>
 
-    <div class="container">
+<!-- FIRST SECTION -->
+<div class="container">
 
-        <h1>Galaxy Plus Pharmacy</h1>
+    <h1>Galaxy Plus Pharmacy</h1>
 
-        <!-- Images -->
-        <div class="images">
-            <img src="https://dvago-assets.s3.ap-southeast-1.amazonaws.com/dvago-products-images/panadol-120ml-liquid.webp">
-            <img src="https://www.dvago.pk/_next/image?url=https%3A%2F%2Fdvago-assets.s3.ap-southeast-1.amazonaws.com%2FProductsImages%2FPanadol%2520Regular%2520600x600.jpg&w=1280&q=50">
-        </div>
+    <div class="images">
+        <img src="https://dvago-assets.s3.ap-southeast-1.amazonaws.com/dvago-products-images/panadol-120ml-liquid.webp">
+        <img src="https://www.dvago.pk/_next/image?url=https%3A%2F%2Fdvago-assets.s3.ap-southeast-1.amazonaws.com%2FProductsImages%2FPanadol%2520Regular%2520600x600.jpg&w=1280&q=50">
+    </div>
 
-        <!-- Description -->
-        <div class="description">
-            <p>
-                Welcome to Galaxy Plus Pharmacy, your trusted partner in health and wellness.
-                We provide high-quality medicines including tablets and syrups to ensure your well-being.
-                Our commitment is to deliver genuine products at affordable prices with excellent customer service.
-                Your health is our priority, and we strive to serve you with care and reliability every day.
-            </p>
-        </div>
+    <div class="description">
+        <p>
+            Welcome to Galaxy Plus Pharmacy, your trusted partner in health and wellness.
+            We provide high-quality medicines including tablets and syrups to ensure your well-being.
+            Our commitment is to deliver genuine products at affordable prices with excellent customer service.
+            Your health is our priority, and we strive to serve you with care and reliability every day.
+        </p>
+    </div>
 
-        <!-- Buttons -->
-        <div>
-            <!-- WhatsApp -->
-            <a href="https://wa.me/ class="btn">WhatsApp Order</a>
+</div>
 
-            <!-- Email -->
-            <a href="mailto:your@gmail.com" class="btn">Email Us</a>
-        </div>
+<!-- SECOND SECTION -->
+<div class="container dark">
 
-        <!-- Social Links -->
-        <div class="social">
-            <a href="https://instagram.com/yourusername" target="_blank">Instagram</a> |
-            <a href="https://facebook.com/yourpage" target="_blank">Facebook</a>
-        </div>
+    <div class="form-section">
+        <h2>Place Your Order</h2>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p>© 2026 Galaxy Plus Pharmacy</p>
-        </div>
+        <form onsubmit="sendToWhatsApp(); return false;">
+
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="03XXXXXXXXX" required>
+            </div>
+
+            <div class="input-group">
+                <label>Postal Code</label>
+                <input type="text" placeholder="Enter postal code" required>
+            </div>
+
+            <div class="input-group">
+                <label>City</label>
+                <input type="text" placeholder="Enter city" required>
+            </div>
+
+            <button type="submit" class="btn">Submit</button>
+
+        </form>
+
+        <br>
+
+        <a href="https://wa.me/923190947096" target="_blank" class="btn">
+            Order on WhatsApp
+        </a>
 
     </div>
+
+    <div class="footer">
+        <p>© 2026 Galaxy Plus Pharmacy</p>
+    </div>
+
+</div>
+
+<!-- WhatsApp Script -->
+<script>
+function sendToWhatsApp() {
+    var name = document.querySelector('input[placeholder="Enter your name"]').value;
+    var email = document.querySelector('input[placeholder="Enter your email"]').value;
+    var phone = document.querySelector('input[placeholder="03XXXXXXXXX"]').value;
+    var postal = document.querySelector('input[placeholder="Enter postal code"]').value;
+    var city = document.querySelector('input[placeholder="Enter city"]').value;
+
+    var message = "New Order:%0A"
+        + "Name: " + name + "%0A"
+        + "Email: " + email + "%0A"
+        + "Phone: " + phone + "%0A"
+        + "Postal Code: " + postal + "%0A"
+        + "City: " + city;
+
+    var whatsappURL = "https://wa.me/923190947096?text=" + message;
+
+    window.open(whatsappURL, '_blank');
+}
+</script>
 
 </body>
 </html>
